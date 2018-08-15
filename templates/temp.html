@@ -181,14 +181,14 @@
                   <th  style="display: none">Role
                     
                   </th>
-                  <th style="display: none">Member Since
+                  <th ng-click="sort('memberSince')" style="display: none">Member Since
                     
                   </th>
                   <th>View Detais</th>
      </tr>
    </thead>
    <tbody>
-     <tr ng-repeat="account in accounts">
+     <tr dir-paginate="account in accounts">
       <td>{{'{{account.idNumber}}'}}</td>
       <td>{{'{{account.name}}'}}</td>
       <td>{{'{{account.gender}}'}}</td>
@@ -260,6 +260,7 @@
 
 </div>
 </div>
+<dir-pagination-controls max-size="700" direction-links="true" boundary-links="true" style="float: right;    margin-top: -30px;"></dir-pagination-controls>
 
 </div>
 </div>
