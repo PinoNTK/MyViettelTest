@@ -1,13 +1,14 @@
 # MyViettelTest
 Internship Test 
-Create virtua enviroment
+
+- Create virtua enviroment
 
 python -m venv venv
 
-Install requirement
+- Install requirement
 
 ./venv/Scripts/python.exe -m pip install -r requirement.txt
 
-Run app
+- Run app
 
 ./venv/Scripts/python.exe app.py
