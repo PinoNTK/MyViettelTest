@@ -1,0 +1,6 @@
+pymongo
+flask
+bson
+fabric
+jwt
+bcrypt
