@@ -1,0 +1,13 @@
+#searchField{
+    /*width: 33%;*/
+}
+#fieldValue{
+    width: 86%;
+}
+/*#adminSeachFrame{
+    margin-left: -4%; margin-top: 24px;
+}*/
+.sort-icon {
+    font-size: 9px;
+    margin-left: 5px;
+}

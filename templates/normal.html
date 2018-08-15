@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+	<title>Bank Accounts - Normal</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="static/css/jumbotron-narrow.css" rel="stylesheet"> 
+	<link rel="stylesheet" type="text/css" href="static/css/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" type="text/css" href="static/css/custom.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="static/css/custom.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="static/js/moment.js"></script>
+	<script type="text/javascript" src="static/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="static/js/angular.js"></script>
+	<script src="static/js/datatables.min.js"></script>
+	<script type="text/javascript" src="static/js/controller.js"></script>
+	<script type="text/javascript" src="static/js/custom.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="static/js/dirPagination.js"></script>
+
+</head>
+
+<body ng-controller="HomeCtrl">
+	<div class="container-fluid">
+		<div class="header clearfix">
+			<h2 class="text-muted" id="auth">Normal Manager</h3>
+			</div>
+			<div class="row">
+				<form>
+					<div class= row>
+
+						<div class="col-md-4">
+							<div class="form-group" style="float:right;">
+								<label for="searchField">Select a field:</label>
+								<select class="form-control" id="searchField">
+									<option>Name</option>
+									<option>ID Number</option>
+									<option>Gender</option>
+									<option>Birthday</option>
+									<option>Phone</option>
+									<option>Address</option>
+									<option>Mail</option>
+									<option>Username</option>
+									<option>Password</option>
+									<option>Account Number</option>
+									<option>Card Number</option>
+									<option>Account Balance</option>
+									<option>Role</option>
+									<option>Member Since</option>
+								</select>
+								<br>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="pwd">Field value:</label>
+								<input type="text" class="form-control" id="fieldValue">
+							</div>
+						</div>
+						<div class="col-md-4" id="normalSearchFrame" ng-click="normalSearch()" style="margin-left: -4%; margin-top: 24px;">
+							<button type="button" class="btn btn-info" id="normalSearch">
+								<span class="glyphicon glyphicon-search"></span> Search
+							</button>
+						</div>
+					</div>
+					<div class=row>
+
+					</div>
+
+
+				</form>
+
+			</div>
+			<div class="bs-example" data-example-id="panel-without-body-with-table">
+				<div class="panel panel-default">
+					<div class=".card-header"></div>
+
+					<div class="table-responsive">
+						<table id="myDataTable" class="table table-striped table-hover table-bordered" style="width:100%">
+							<thead>
+								<tr>
+
+									<th>Id number
+
+									</th>
+									<th >Full Name
+										
+									</th>
+									<th>Gender
+
+									</th>
+									<th>Birthday
+										
+									</th>
+									<th>Address
+										
+									</th>
+									<th>Phone Number
+										
+									</th>
+									<th >Account Number
+
+									</th>
+									<th style="display: none">Card Number
+										
+									</th>
+									<th style="display: none">Account Balance
+										
+									</th>
+									<th  style="display: none">Mail
+										
+									</th>
+									<th  style="display: none">Username
+										
+									</th>
+									<th  style="display: none">Password
+										
+									</th>
+									<th  style="display: none">Role
+										
+									</th>
+									<th ng-click="sort('memberSince')" style="display: none">Member Since
+										
+									</th>
+									<th>View Detais</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="account in accounts">
+									<td>{{'{{account.idNumber}}'}}</td>
+									<td>{{'{{account.name}}'}}</td>
+									<td>{{'{{account.gender}}'}}</td>
+									<td>{{'{{account.birthday}}'}}</td>
+									<td>{{'{{account.address}}'}}</td>
+									<td>{{'{{account.phoneNumber}}'}}</td>
+									<td>{{'{{account.accountNumber}}'}}</td>
+									<td style="display: none">{{'{{account.cardNumber}}'}}</td>
+									<td style="display: none">{{'{{account.accountBalance-0|number}}'}}</td>
+									<td style="display: none">{{'{{account.mail}}'}}</td>
+									<td style="display: none">{{'{{account.username}}'}}</td>
+									<td style="display: none">{{'{{account.password}}'}}</td>
+									<td style="display: none">{{'{{account.role}}'}}</td>
+									<td style="display: none">{{'{{account.memberSince}}'}}</td>
+									<td><span style="cursor:pointer;color:#5bc0de; font-size: 166%; margin-left: 32%" ng-click="editAccount(account.accountId)" class="glyphicon glyphicon-new-window" aria-hidden="true"></span></td>
+									
+								</tr>
+
+							</tbody>
+							<tfoot>
+								<tr>
+									<th>Id number
+
+									</th>
+									<th >Full Name
+										
+									</th>
+									<th>Gender
+
+									</th>
+									<th>Birthday
+										
+									</th>
+									<th>Address
+										
+									</th>
+									<th>Phone Number
+										
+									</th>
+									<th >Account Number
+
+									</th>
+									<th style="display: none">Card Number
+										
+									</th>
+									<th style="display: none">Account Balance
+										
+									</th>
+									<th  style="display: none">Mail
+										
+									</th>
+									<th  style="display: none">Username
+										
+									</th>
+									<th  style="display: none">Password
+										
+									</th>
+									<th  style="display: none">Role
+										
+									</th>
+									<th ng-click="sort('memberSince')" style="display: none">Member Since
+										
+									</th>
+									<th>View Detais</th>
+								</tr>
+							</tfoot>
+						</table>
+
+
+
+					</div>
+				</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="addPopUp" tabindex="-1" role="diae" aria-labelledby="exampleModalLabel">
+
+		<div class="modal-dialog modal-lg" role="document">
+
+			<div class="modal-content" style="width: 120%; margin-left: -10%;">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Account Details</h4>
+				</div>
+				<div class="modal-body">
+					<table class="table table-striped">
+						<tbody>
+							<tr>
+								<td colspan="1">
+									<form class="well form-horizontal">
+										<fieldset>
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="txtName">Full Name</label>
+												<div class="col-md-8 inputGroupContainer">
+													<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+														<input id="fullName" name="fullName" placeholder="Full Name" class="form-control inputCustom" required="true" value="" type="text" ng-model="info.name" id="txtName">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="txtIDNumber">ID Number</label>
+												<div class="col-md-8 inputGroupContainer">
+													<div class="input-group"><span class="input-group-addon"><i class="fa fa-address-card"></i></span>
+														<input placeholder="ID number" class="form-control inputCustom" required="true" type="text" ng-model="info.idNumber" id="txtIDNumber">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="txtGender">Gender</label>
+												<div class="col-md-8 inputGroupContainer">
+													<div class="input-group">
+														<span class="input-group-addon" style="max-width: 100%;"><i class="fa fa-venus-mars"></i></span>
+														<select class="selectpicker form-control" id="gender" name="selectedGender">
+															<option id="male">Male</option>
+															<option id="female">Female</option>
+															<option id="unidentified">Unindentified</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="txtBirthDay">Birthday</label>
+												<div class="col-md-8 inputGroupContainer">
+													<div class="input-group date" id="datetimepicker_birthday_js">
+
+														<span class="input-group-addon">
+															<span class="glyphicon glyphicon-calendar"></span>
+														</span>
+
+														<input type='text' class="form-control inputCustom" ng-model="info.birthday" id="txtBirthDay" placeholder="Birthday" />
+
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="txtPhoneNumber">Phone</label>
+												<div class="col-md-8 inputGroupContainer">
+													<div class="input-group"><span class="input-group-addon"><i class="fa fa-phone"></i></span>
+														<input placeholder="Phone number" class="form-control inputCustom" required="true" type="text" ng-model="info.phoneNumber" id="txtPhoneNumber">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-4 control-label" or="txtAddress">Address</label>
+												<div class="col-md-8 inputGroupContainer">
+													<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+														<input placeholder="State/Province/Region" class="form-control inputCustom" required="true" type="text" ng-model="info.address" id="txtAddress">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="txtMail">Mail</label>
+												<div class="col-md-8 inputGroupContainer">
+													<div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+														<input placeholder="Mail address" class="form-control inputCustom" required="true" type="text" ng-model="info.mail" id="txtMail">
+													</div>
+												</div>
+											</div>
+										</fieldset>
+									</form>
+								</td>
+								<td colspan="1">
+									<form class="well form-horizontal">
+										<fieldset>
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="txtUsername">Username</label>
+												<div class="col-md-8 inputGroupContainer">
+													<div class="input-group"><span class="input-group-addon"><i class="fa fa-user"></i></span>
+														<input placeholder="Username" class="form-control inputCustom" required="true" type="text" ng-model="info.username" id="txtUsername">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="txtPassword">Password</label>
+												<div class="col-md-8 inputGroupContainer">
+													<div class="input-group"><span class="input-group-addon"><i class="fa fa-key"></i></span>
+														<input ng-model="info.password" id="txtPassword" placeholder="Password" class="form-control inputCustom" required="true" type="password">
+														<span class="input-group-addon"><i class="glyphicon glyphicon-eye-open" style="cursor:pointer" id="passwordEye"></i></span>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="txtAccountNumber">Account Number</label>
+												<div class="col-md-8 inputGroupContainer">
+													<div class="input-group"><span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+														<input placeholder="Account number" class="form-control inputCustom" required="true" type="text" ng-model="info.accountNumber" id="txtAccountNumber">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="txtCardNumber">Card Number</label>
+												<div class="col-md-8 inputGroupContainer">
+													<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+														<input placeholder="Card number" class="form-control inputCustom" required="true" type="text" ng-model="info.cardNumber" id="txtCardNumber">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="txtAccountBalance">Account Balance</label>
+												<div class="col-md-8 inputGroupContainer">
+													<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-euro"></i></span>
+														<input placeholder="Account balance" class="form-control inputCustom" required="true" type="text" ng-model="info.accountBalance" id="txtAccountBalance">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="txtRole">Role</label>
+												<div class="col-md-8 inputGroupContainer">
+													<div class="input-group"><span class="input-group-addon"><i class="fa fa-user-secret"></i></span>
+														<input placeholder="Role" class="form-control inputCustom" required="true" type="text" ng-model="info.role" id="txtRole">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="txtMemberSince">Member Since</label>
+												<div class="col-md-8 inputGroupContainer">
+													<div class="input-group date" id="datetimepicker_memberSince__js">
+														<span class="input-group-addon"><span class="fa fa-calendar"></span>
+													</span>
+													<input type='text' class="form-control inputCustom" ng-model="info.memberSince" id="txtMemberSince" placeholder="Account creating time" />
+
+												</div>
+											</div>
+										</div>
+
+									</fieldset>
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="btnClose">Close</button>
+			</div>
+		</div>
+	</div> 
+</div>
+
+
+
+</body>
+
+</html>
