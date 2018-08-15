@@ -1,7 +1,9 @@
 import random
-import uuid
-import re
 import string
+from pymongo import MongoClient
+client = MongoClient('localhost:27017')
+db = client.BankAccount
+
 s1 = u'ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠạẢảẤấẦầẨẩẪẫẬậẮắẰằẲẳẴẵẶặẸẹẺẻẼẽẾếỀềỂểỄễỆệỈỉỊịỌọỎỏỐốỒồỔổỖỗỘộỚớỜờỞởỠỡỢợỤụỦủỨứỪừỬửỮữỰựỲỳỴỵỶỷỸỹỷ'
 s0 = u'AAAAEEEIIOOOOUUYaaaaeeeiioooouuyAaDdIiUuOoUuAaAaAaAaAaAaAaAaAaAaAaAaEeEeEeEeEeEeEeEeIiIiOoOoOoOoOoOoOoOoOoOoOoOoUuUuUuUuUuUuUuYyYyYyYyy'
 
@@ -85,5 +87,6 @@ def gen_account(n):
         })
     return accounts
 if __name__ == '__main__':
-    print(gen_account(1))
-    # print(audio.shape)
+    myAccounts = gen_account(40)
+    for account in myAccounts:
+        db.Accounts.insert(account)
