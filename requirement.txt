@@ -2,5 +2,5 @@ pymongo
 flask
 bson
 fabric
-jwt
+flask-jwt
 bcrypt
