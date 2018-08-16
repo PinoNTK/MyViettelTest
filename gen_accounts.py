@@ -87,6 +87,6 @@ def gen_account(n):
         })
     return accounts
 if __name__ == '__main__':
-    myAccounts = gen_account(40)
+    myAccounts = gen_account(10000)
     for account in myAccounts:
         db.Accounts.insert(account)

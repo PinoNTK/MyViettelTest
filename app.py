@@ -437,31 +437,24 @@ def index():
 
 @application.route('/login', methods=['POST'])
 def login():
+    session.clear();
     auth = request.authorization
     if not auth or not auth.username or not auth.password:
         return make_response('Could not verify', 401, {'WWW-Authenticate' : 'Basic realm="Login required!"'})
-        # return 'Fail'
     users= db.Users
-    # login_user= users.find_one({'username': request.form['username']})
+
     login_user= users.find_one({'username': auth.username})
     if not login_user:
         return make_response('Could not verify', 401, {'WWW-Authenticate' : 'Basic realm="Login required!"'})
     if login_user:
-        # if bcrypt.hashpw(request.form['pass'].encode('utf-8'),login_user['password'])== login_user['password']:
-        #     session['username']= request.form['username']
-        #     return redirect(url_for('index'))
-        # if check_password_hash(login_user['password'],request.form['pass']):
         if check_password_hash(login_user['password'],auth.password):
-            # session['username']= request.form['username']
             session['username']= auth.username
-            token = jwt.encode({'user_id' : login_user['user_id'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=5)}, application.config['SECRET_KEY'])
-            
+            token = jwt.encode({'user_id' : login_user['user_id'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=5)}, application.config['SECRET_KEY'])           
             session['token']=token.decode('UTF-8')
-            # return jsonify({'token' : token.decode('UTF-8')})
             return redirect(url_for('index'))
+
+    session.clear();
     return 'Invalid username or password'
-    # return str(check_password_hash(login_user['password'],request.form['pass']))
-    # return jsonify(login_user)
 
 @application.route('/logout', methods=['POST'])
 def logOut():
@@ -475,13 +468,11 @@ def register():
         users= db.Users
         existing_user=users.find_one({'username': request.form['username']})
         if existing_user is None:
-            # hashpass= bcrypt.hashpw(request.form['pass'].encode('utf-8'),bcrypt.gensalt())
             hashed_password = generate_password_hash(request.form['pass'], method='sha256')
             db.Users.insert({'user_id': str(uuid.uuid4()),'username': request.form['username'],'password':hashed_password,'admin':False})
             session['username']= request.form['username']
             session.clear()
             return redirect(url_for('index'))
-            # return 'Succeed!'
         return 'That username already exists!'
 
 
@@ -492,7 +483,4 @@ def register():
 if __name__ == "__main__":
 
     application.run(debug=True)
-    # myAccounts=gen_accounts.gen_account(40)
-    # for account in myAccounts:
-    #     db.Accounts.insert(account)
 

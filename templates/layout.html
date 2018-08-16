@@ -2,36 +2,82 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
-
+    <meta name="author" content="Bino-NTK">
     <title>Login</title>
-
-    <!-- <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"> -->
+    <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <style type="text/css">
-        #login,#signUp{
-                margin-left: 33%;
-                margin-top: 7%;
-                border-style: solid;
-                border-color: #3a3f46;
-                border-radius: 26px;
-                padding: 7% 1% 10% 1%;
-        }
-    </style>
 </head>
 
 <body>
-    {% block body %}{% endblock %}
-    <!-- <script src="{{ url_for('static', filename='js/jquery.js') }}"></script> -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <!-- <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script> -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <nav class="navbar navbar-default" style="margin-top: -1px; background-color: #3a3f46;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#" style="color: white">ABC Bank</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#" style="color: white">Login <span class="sr-only">(current)</span></a></li>
+      </ul>
+  </div>
+</div>
+</nav>
+{% block body %}{% endblock %}
+<footer id="myFooter">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <h5>Get started</h5>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Sign up</a></li>
+                    <li><a href="#">Downloads</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <h5>About us</h5>
+                <ul>
+                    <li><a href="#">Company Information</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Help desk</a></li>
+                    <li><a href="#">Forums</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3 info">
+                <h5>Information</h5>
+                <p> I'm Bino-NTK. </p>
+            </div>
+        </div>
+    </div>
+    <div class="second-bar">
+       <div class="container">
+        <h2 class="logo"><a href="#"> ABC BANK </a></h2>
+        <div class="social-icons">
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+        </div>
+    </div>
+</div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 
 </html>

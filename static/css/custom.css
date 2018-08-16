@@ -4,9 +4,7 @@
 #fieldValue{
     width: 86%;
 }
-/*#adminSeachFrame{
-    margin-left: -4%; margin-top: 24px;
-}*/
+
 .sort-icon {
     font-size: 9px;
     margin-left: 5px;
@@ -108,3 +106,12 @@
     }
 }
 
+#login,#signUp{
+    margin-left: 33%;
+    margin-top: 3%;
+    border-style: solid;
+    border-color: #3a3f46;
+    border-radius: 26px;
+    padding: 7% 1% 10% 1%;
+    margin-bottom: 6%
+}

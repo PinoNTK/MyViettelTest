@@ -11,21 +11,11 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="static/css/custom.css">
-  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-  <script type="text/javascript" src="static/js/moment.js"></script>
-  <script type="text/javascript" src="static/js/bootstrap-datetimepicker.min.js"></script>
-  <script src="static/js/angular.js"></script>
-  <script type="text/javascript" src="static/js/controller.js"></script>
-  <script type="text/javascript" src="static/js/custom.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="static/js/dirPagination.js"></script>
-
 </head>
 
 <body ng-controller="HomeCtrl">
   <nav class="navbar navbar-default" style="margin-top: -20px; background-color: #3a3f46;">
     <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
@@ -35,69 +25,59 @@
         </button>
         <a class="navbar-brand" href="#" style="color: white">ABC Bank</a>
       </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#" style="color: white">Admin</a></li>
-          <li><a href="#" style="color: white">Normal</a><span class="sr-only">(current)</span></li>
+          <li><a href="#" style="color: white">Admin</a></li>
+          <li class="active"><a href="#" style="color: white">Normal<span class="sr-only">(current)</span></a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" ng-click= "logOut()">
           <li><a href="#" style="color: white">Log out</a></li>
         </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+      </div>
+    </div>
   </nav>
   <div class="container-fluid">
     <div class="header clearfix">
-
       <h1 class="text-muted" style="margin-left: 37%; font-weight: 600" id="auth">Normal Manager</h1>
+    </div>
+    <div class="row">
+     <form>
+      <div class= row>
+       <div class="col-md-4">
+        <div class="form-group" style="float:right;">
+         <label for="searchField">Select a field:</label>
+         <select class="form-control" id="searchField">
+          <option>Name</option>
+          <option>ID Number</option>
+          <option>Gender</option>
+          <option>Birthday</option>
+          <option>Phone</option>
+          <option>Address</option>
+          <option>Mail</option>
+          <option>Username</option>
+          <option>Password</option>
+          <option>Account Number</option>
+          <option>Card Number</option>
+          <option>Account Balance</option>
+          <option>Role</option>
+          <option>Member Since</option>
+        </select>
+        <br>
       </div>
-      <div class="row">
-       <form>
-        <div class= row>
-
-         <div class="col-md-4">
-          <div class="form-group" style="float:right;">
-           <label for="searchField">Select a field:</label>
-           <select class="form-control" id="searchField">
-            <option>Name</option>
-            <option>ID Number</option>
-            <option>Gender</option>
-            <option>Birthday</option>
-            <option>Phone</option>
-            <option>Address</option>
-            <option>Mail</option>
-            <option>Username</option>
-            <option>Password</option>
-            <option>Account Number</option>
-            <option>Card Number</option>
-            <option>Account Balance</option>
-            <option>Role</option>
-            <option>Member Since</option>
-          </select>
-          <br>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-         <label for="pwd">Field value:</label>
-         <input type="text" class="form-control" id="fieldValue">
-       </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+       <label for="pwd">Field value:</label>
+       <input type="text" class="form-control" id="fieldValue">
      </div>
-     <div class="col-md-4" id="normalSearchFrame" ng-click="normalSearch()" style="margin-left: -4%; margin-top: 24px;">
-      <button type="button" class="btn btn-info" id="adminSearch" style="background-color: #3a3f46; border-color: #3a3f46">
-       <span class="glyphicon glyphicon-search" ></span> Search
-     </button>
    </div>
+   <div class="col-md-4" id="normalSearchFrame" ng-click="normalSearch()" style="margin-left: -4%; margin-top: 24px;">
+    <button type="button" class="btn btn-info" id="adminSearch" style="background-color: #3a3f46; border-color: #3a3f46">
+     <span class="glyphicon glyphicon-search" ></span> Search
+   </button>
  </div>
- <div class=row>
-
- </div>
-
-
+</div>
 </form>
-
 </div>
 <div class="row" style="margin-left: 401px; margin-top: -13px; padding-bottom: 15px;">
   <div class="form-group">
@@ -105,13 +85,10 @@
       <label class="" for="txtBirthDay">Birthday</label>
       <div class="inputGroupContainer">
         <div class="input-group date" id="datetimepicker_searchBirthday_js">
-
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
           </span>
-
           <input type='text' class="form-control" id="txtsearchBirthDay" placeholder="Birthday"/>
-
         </div>
       </div>
     </div>
@@ -120,7 +97,6 @@
        <span class="glyphicon glyphicon-search"></span> Search
      </button>
    </div>
-
  </div>
 </div>
 <hr>
@@ -130,129 +106,70 @@
    <input type="text" ng-model="search" class="form-control" placeholder="Search" style="margin-left: 4px;">
  </div>
 </form>
-
 <div class="bs-example" data-example-id="panel-without-body-with-table" style="width: 95%;
-    margin-left: 34px;">
-  <div class="panel panel-default">
-    <div class=".card-header"></div>
-
-    <div class="table-responsive">
-
-     <table id="myDataTable" class="table table-striped table-hover table-bordered" style="width:100%">
-      <thead>
-       <tr>
-
-        <th>Id number
-
-                  </th>
-                  <th >Full Name
-                    
-                  </th>
-                  <th>Gender
-
-                  </th>
-                  <th>Birthday
-                    
-                  </th>
-                  <th>Address
-                    
-                  </th>
-                  <th>Phone Number
-                    
-                  </th>
-                  <th >Account Number
-
-                  </th>
-                  <th style="display: none">Card Number
-                    
-                  </th>
-                  <th style="display: none">Account Balance
-                    
-                  </th>
-                  <th  style="display: none">Mail
-                    
-                  </th>
-                  <th  style="display: none">Username
-                    
-                  </th>
-                  <th  style="display: none">Password
-                    
-                  </th>
-                  <th  style="display: none">Role
-                    
-                  </th>
-                  <th style="display: none">Member Since
-                    
-                  </th>
-                  <th>View Detais</th>
-     </tr>
-   </thead>
-   <tbody>
-     <tr ng-repeat="account in accounts">
-      <td>{{'{{account.idNumber}}'}}</td>
-      <td>{{'{{account.name}}'}}</td>
-      <td>{{'{{account.gender}}'}}</td>
-      <td>{{'{{account.birthday}}'}}</td>
-      <td>{{'{{account.address}}'}}</td>
-      <td>{{'{{account.phoneNumber}}'}}</td>
-      <td>{{'{{account.accountNumber}}'}}</td>
-      <td style="display: none">{{'{{account.cardNumber}}'}}</td>
-      <td style="display: none">{{'{{account.accountBalance-0|number}}'}}</td>
-      <td style="display: none">{{'{{account.mail}}'}}</td>
-      <td style="display: none">{{'{{account.username}}'}}</td>
-      <td style="display: none">{{'{{account.password}}'}}</td>
-      <td style="display: none">{{'{{account.role}}'}}</td>
-      <td style="display: none">{{'{{account.memberSince}}'}}</td>
-      <td><span style="cursor:pointer;color:#3a3f46; font-size: 166%; margin-left: 32%" ng-click="editAccount(account.accountId)" class="glyphicon glyphicon-new-window" aria-hidden="true"></span></td>
+margin-left: 34px;">
+<div class="panel panel-default">
+  <div class=".card-header"></div>
+  <div class="table-responsive">
+   <table id="myDataTable" class="table table-striped table-hover table-bordered" style="width:100%">
+    <thead>
+     <tr>
+      <th>Id number</th>
+      <th >Full Name</th>
+      <th>Gender</th>
+      <th>Birthday</th>
+      <th>Address</th>
+      <th>Phone Number</th>
+      <th >Account Number</th>
+      <th style="display: none">Card Number</th>
+      <th style="display: none">Account Balance</th>
+      <th style="display: none">Mail</th>
+      <th style="display: none">Username</th>
+      <th style="display: none">Password</th>
+      <th style="display: none">Role</th>
+      <th style="display: none">Member Since</th>
+      <th>View Detais</th>
     </tr>
+  </thead>
+  <tbody>
+   <tr ng-repeat="account in accounts">
+    <td>{{'{{account.idNumber}}'}}</td>
+    <td>{{'{{account.name}}'}}</td>
+    <td>{{'{{account.gender}}'}}</td>
+    <td>{{'{{account.birthday}}'}}</td>
+    <td>{{'{{account.address}}'}}</td>
+    <td>{{'{{account.phoneNumber}}'}}</td>
+    <td>{{'{{account.accountNumber}}'}}</td>
+    <td style="display: none">{{'{{account.cardNumber}}'}}</td>
+    <td style="display: none">{{'{{account.accountBalance-0|number}}'}}</td>
+    <td style="display: none">{{'{{account.mail}}'}}</td>
+    <td style="display: none">{{'{{account.username}}'}}</td>
+    <td style="display: none">{{'{{account.password}}'}}</td>
+    <td style="display: none">{{'{{account.role}}'}}</td>
+    <td style="display: none">{{'{{account.memberSince}}'}}</td>
+    <td><span style="cursor:pointer;color:#3a3f46; font-size: 166%; margin-left: 32%" ng-click="editAccount(account.accountId)" class="glyphicon glyphicon-new-window" aria-hidden="true"></span></td>
+  </tr>
 
-  </tbody>
-  <tfoot>
-   <tr>
-    <th>Id number
-
-                  </th>
-                  <th >Full Name
-                    
-                  </th>
-                  <th>Gender
-
-                  </th>
-                  <th>Birthday
-                    
-                  </th>
-                  <th>Address
-                    
-                  </th>
-                  <th>Phone Number
-                    
-                  </th>
-                  <th >Account Number
-
-                  </th>
-                  <th style="display: none">Card Number
-                    
-                  </th>
-                  <th style="display: none">Account Balance
-                    
-                  </th>
-                  <th  style="display: none">Mail
-                    
-                  </th>
-                  <th  style="display: none">Username
-                    
-                  </th>
-                  <th  style="display: none">Password
-                    
-                  </th>
-                  <th  style="display: none">Role
-                    
-                  </th>
-                  <th ng-click="sort('memberSince')" style="display: none">Member Since
-                    
-                  </th>
-                  <th>View Detais</th>
- </tr>
+</tbody>
+<tfoot>
+  <tr>
+    <th>Id number</th>
+    <th >Full Name</th>
+    <th>Gender</th>
+    <th>Birthday</th>
+    <th>Address</th>
+    <th>Phone Number</th>
+    <th >Account Number</th>
+    <th style="display: none">Card Number</th>
+    <th style="display: none">Account Balance</th>
+    <th style="display: none">Mail</th>
+    <th style="display: none">Username</th>
+    <th style="display: none">Password</th>
+    <th style="display: none">Role</th>
+    <th style="display: none">Member Since</th>
+    <th>View Detais</th>
+  </tr>
+</tr>
 </tfoot>
 </table>
 
@@ -317,9 +234,7 @@
                           <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                           </span>
-
                           <input type='text' class="form-control inputCustom" ng-model="info.birthday" id="txtBirthDay" placeholder="Birthday" />
-
                         </div>
                       </div>
                     </div>
@@ -420,59 +335,66 @@
           </tr>
         </tbody>
       </table>
-   </div>
-   <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal" id="btnClose">Close</button>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal" id="btnClose">Close</button>
+    </div>
   </div>
-</div>
 </div> 
 </div>
 <!-- Footer -->
 <footer id="myFooter">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <h5>Get started</h5>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Sign up</a></li>
-                        <li><a href="#">Downloads</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>About us</h5>
-                    <ul>
-                        <li><a href="#">Company Information</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Reviews</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>Support</h5>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Help desk</a></li>
-                        <li><a href="#">Forums</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3 info">
-                    <h5>Information</h5>
-                    <p> I'M BINO-NTK. </p>
-                </div>
-            </div>
-        </div>
-        <div class="second-bar">
-           <div class="container">
-                <h2 class="logo"><a href="#"> ABC BANK </a></h2>
-                <div class="social-icons">
-                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                    <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Get started</h5>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Sign up</a></li>
+          <li><a href="#">Downloads</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <h5>About us</h5>
+        <ul>
+          <li><a href="#">Company Information</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Reviews</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Help desk</a></li>
+          <li><a href="#">Forums</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3 info">
+        <h5>Information</h5>
+        <p> I'm Bino-NTK. </p>
+      </div>
+    </div>
+  </div>
+  <div class="second-bar">
+   <div class="container">
+    <h2 class="logo"><a href="#"> ABC BANK </a></h2>
+    <div class="social-icons">
+      <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+      <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+      <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+    </div>
+  </div>
+</div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="static/js/moment.js"></script>
+<script type="text/javascript" src="static/js/bootstrap-datetimepicker.min.js"></script>
+<script src="static/js/angular.js"></script>
+<script type="text/javascript" src="static/js/controller.js"></script>
+<script type="text/javascript" src="static/js/custom.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/js/dirPagination.js"></script>
 </body>
 
 </html>
