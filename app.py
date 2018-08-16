@@ -267,6 +267,49 @@ def searchBirthAccounts(current_user):
         currentTimeRaw = time.localtime()
         currentTime=str(time.strftime('%d/%m/%Y', currentTimeRaw))
         print(currentTime)
+        customerAge = datetime.timedelta(seconds= time.mktime(time.strptime(currentTime,"%d/%m/%Y"))-time.mktime(time.strptime(searchParameters['fieldValue'],"%d/%m/%Y"))).days//365
+        print(customerAge)
+        for account in accounts:
+            accountAge = datetime.timedelta(seconds= time.mktime(time.strptime(currentTime,"%d/%m/%Y"))-time.mktime(time.strptime(account['birthday'],"%d/%m/%Y"))).days//365
+            print(accountAge)
+            if accountAge>=customerAge:
+                    accountItem = {
+                            'accountBalance' : account['accountBalance'],
+                            'accountNumber': account['accountNumber'],
+                            'address' : account['address'],
+                            'birthday' : account['birthday'],
+                            'cardNumber' : account['cardNumber'],
+                            'idNumber' : account['idNumber'],
+                            'mail' : account['mail'],
+                            'name' : account['name'],
+                            'password' : account['password'],
+                            'phoneNumber' : account['phoneNumber'],
+                            'role' : account['role'],
+                            'username' : account['username'],
+                            'gender' : account['gender'],
+                            'memberSince' : account['memberSince'],
+                            'accountId' : str(account['_id']) 
+                            }
+                    accountList.append(accountItem)
+    except Exception as e:
+        return str(e)
+    return json.dumps(accountList)
+
+@application.route('/adminsearchonebirth', methods=['POST'])
+@token_required
+def searchOneBirthAccount(current_user):
+    try:
+        if current_user['admin']:
+            return jsonify({'message' : 'Cannot perform that function!'})
+        searchParameters =  request.json['searchOneBirthData']
+        # accounts = db.Accounts.find({'birthday':searchParameters['fieldValue']})
+        accounts = db.Accounts.find()
+        
+        print(searchParameters['fieldValue'])
+        accountList = []
+        currentTimeRaw = time.localtime()
+        currentTime=str(time.strftime('%d/%m/%Y', currentTimeRaw))
+        print(currentTime)
         customerAge = datetime.timedelta(seconds= time.mktime(time.strptime(currentTime,"%d/%m/%Y"))-time.mktime(time.strptime(searchParameters['fieldValue'],"%d/%m/%Y"))).days
         print(customerAge)
         for account in accounts:
@@ -291,6 +334,7 @@ def searchBirthAccounts(current_user):
                             'accountId' : str(account['_id']) 
                             }
                     accountList.append(accountItem)
+                    return json.dumps(accountList)
     except Exception as e:
         return str(e)
     return json.dumps(accountList)
@@ -410,7 +454,7 @@ def login():
         if check_password_hash(login_user['password'],auth.password):
             # session['username']= request.form['username']
             session['username']= auth.username
-            token = jwt.encode({'user_id' : login_user['user_id'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, application.config['SECRET_KEY'])
+            token = jwt.encode({'user_id' : login_user['user_id'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=5)}, application.config['SECRET_KEY'])
             
             session['token']=token.decode('UTF-8')
             # return jsonify({'token' : token.decode('UTF-8')})
@@ -418,6 +462,12 @@ def login():
     return 'Invalid username or password'
     # return str(check_password_hash(login_user['password'],request.form['pass']))
     # return jsonify(login_user)
+
+@application.route('/logout', methods=['POST'])
+def logOut():
+    session.clear();
+    application.config['SECRET_KEY']='new'
+    return render_template('login.html')
 
 @application.route('/register', methods=['POST','GET'])
 def register():
@@ -429,8 +479,9 @@ def register():
             hashed_password = generate_password_hash(request.form['pass'], method='sha256')
             db.Users.insert({'user_id': str(uuid.uuid4()),'username': request.form['username'],'password':hashed_password,'admin':False})
             session['username']= request.form['username']
-            # return redirect(url_for('index'))
-            return 'Succeed!'
+            session.clear()
+            return redirect(url_for('index'))
+            # return 'Succeed!'
         return 'That username already exists!'
 
 

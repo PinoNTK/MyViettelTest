@@ -42,7 +42,7 @@
           <li class="active"><a href="#" style="color: white">Admin <span class="sr-only">(current)</span></a></li>
           <li><a href="#" style="color: white">Normal</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" ng-click="logOut()">
           <li><a href="#" style="color: white">Log out</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -51,7 +51,7 @@
   <div class="container-fluid">
     <div class="header clearfix">
 
-      <h1 class="text-muted" style="margin-left: 37%; font-weight: 600">Account Manager</h1>
+      <h1 class="text-muted" style="margin-left: 37%; font-weight: 600" id="auth">Account Manager</h1>
       </div>
       <div class="row">
        <form>
@@ -82,7 +82,7 @@
       <div class="col-md-4">
         <div class="form-group">
          <label for="pwd">Field value:</label>
-         <input type="text" class="form-control" id="fieldValue">
+         <input type="text" class="form-control" id="fieldValue" placeholder="Write your key word here then click search">
        </div>
      </div>
      <div class="col-md-4" id="adminSearchFrame" ng-click="adminSearch()" style="margin-left: -4%; margin-top: 24px;">
@@ -110,7 +110,7 @@
             <span class="glyphicon glyphicon-calendar"></span>
           </span>
 
-          <input type='text' class="form-control" id="txtsearchBirthDay" placeholder="Birthday"/>
+          <input type='text' class="form-control" id="txtsearchBirthDay" placeholder="Select birthday then click search "/>
 
         </div>
       </div>
@@ -127,7 +127,7 @@
 <form class="form-inline">
   <div class="form-group" style="padding-bottom: 13px;margin-left: 33px; ">
    <label >Search</label>
-   <input type="text" ng-model="search" class="form-control" placeholder="Search" style="margin-left: 4px;">
+   <input type="text" ng-model="search" class="form-control" placeholder="You can search anything here!" style="margin-left: 4px;width: 100%">
  </div>
 </form>
       <nav>

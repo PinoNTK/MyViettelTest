@@ -1,6 +1,4 @@
 $(document).ready(function () {
-		// $('#myDataTable').dataTable();
-	 	// $('.dataTables_length').addClass('bs-select');
 	 	$(function () {
                 $('#datetimepicker_birthday_js,#datetimepicker_memberSince__js,#datetimepicker_searchBirthday_js').datetimepicker({
                         format: 'DD/MM/YYYY'
@@ -17,12 +15,13 @@ $(document).ready(function () {
 	 		$('#addPopUp,#btnUpdate').show();
 	 		$(this,'#btnSave').hide();
 	 	});
-	 	$('#btnUpdate').click(function(){
+	 	$('#btnUpdate').click(function(event){
 	 		$('#addPopUp').css( 'cursor', 'progress' );
 	 		$('#gender,#txtMemberSince').prop('disabled', 'disabled');
 		 	$('.inputCustom,#passwordEye').prop('disabled',true);
 		 	$('#btnUpdate').hide(1000);
-		 	$('#btnEdit').show()
+		 	$('#btnEdit').show();
+
 	 	});
 	 	$(".glyphicon-eye-open").mousedown(function(){
                 $("#txtPassword").attr('type','text');
@@ -31,12 +30,14 @@ $(document).ready(function () {
             }).mouseout(function(){
             	$("#txtPassword").attr('type','password');
             });
-	 	$('#btnAddAccount').click(function(){
+	 	$('#btnAddAccount').click(function(event){
 	 		$(this).css( 'cursor', 'pointer' );
 	 		$('#gender,#txtMemberSince').prop('disabled',false);
 	 		$('.inputCustom,#passwordEye').prop('disabled',false);
 	 		$('#btnUpdate,#btnEdit').hide();
 	 		$('#btnSave').show();
+	 		
+	 		
 	 	});
 	 	$('#btnSave').click(function(){
 	 		$('#addPopUp').css( 'cursor', 'progress' );
@@ -64,23 +65,6 @@ $(document).ready(function () {
 	 			alert('Please enter valid email address');
 	 		}
 	 		if (validateEmail(sEmail)) {
-	 			$('#message_success').show();
-	 			$('#message_fail').hide();
-	 			
-	 		}
-	 		else {
-	 			$('#message_fail').show();
-	 			$('#message_success').hide();
-	 			// e.preventDefault();
-	 		}
-	 	});
-	 	$('#txtAccountBalance').mouseout(function() {
-	 		var txtAccountBalance = $('#txtAccountBalance').val();
-	 		if ($.trim(txtAccountBalance).length == 0) {
-	 			alert('Please enter valid Account Balance');
-	 			// e.preventDefault();
-	 		}
-	 		if (txtAccountBalance.isNumeric()&& txtAccountBalance>0) {
 	 			$('#message_success').show();
 	 			$('#message_fail').hide();
 	 			

@@ -29,6 +29,7 @@ angular.module('myApp', ['angularUtils.directives.dirPagination'])
 				$scope.info = {};
 				$scope.searchData = {};
 				$scope.searchBirthData = {};
+				$scope.searchOneBirthData = {};
 				
 				$scope.showAdd = true;
 				$scope.sort = function(keyname){
@@ -54,21 +55,50 @@ angular.module('myApp', ['angularUtils.directives.dirPagination'])
 				
 				$scope.addAccount = function(){
 					
-					$scope.info.gender=$('select[name=selectedGender]').val();
-					$scope.info.memberSince=$('#txtMemberSince').val().toString();
-					$scope.info.birthday=$('#txtBirthDay').val().toString();
+					var sEmail = $('#txtMail').val();
+					var accountBalance = $('#txtAccountBalance').val();
+					var accountNumber = $('#txtAccountNumber').val();
+					var cardNumber = $('#txtCardNumber').val();
+					var phone = $('#txtPhoneNumber').val();
+					var idNumber = $('txtIDNumber').val();
+					var isnum_accNum = /^\d+$/.test(accountNumber);
+					var isnum_cardNum = /^\d+$/.test(cardNumber);
+					var isnum_accBalance = /^\d+$/.test(accountBalance);
+					var isnum_phoneNum = /^\d+$/.test(phone);
+					var isnum_idNum = /^\d+$/.test(idNumber);
+					if ($.trim(sEmail).length == 0) {
+						alert('Please enter valid email address');
+					}
+					if (!validateEmail(sEmail)||!(isnum_accBalance&&accountBalance>0)||!isnum_cardNum||!isnum_accNum||!isnum_phoneNum||!isnum_idNum) {
+						alert('Please enter valid email address, account balance,card number, account number!');
+						$('#addPopUp').modal('hide');
+					} else{
+						$scope.info.gender=$('select[name=selectedGender]').val();
+						$scope.info.memberSince=$('#txtMemberSince').val().toString();
+						$scope.info.birthday=$('#txtBirthDay').val().toString();
 					// console.log($scope.info.gender,$scope.info.memberSince,$scope.info.birthday,$scope.info.name,$scope.info.cardNumber,$scope.info.username,$scope.info.password,$scope.info.accountBalance,$scope.info.role,$scope.info.accountNumber,$scope.info.address)
-					$http({
-						method: 'POST',
-						url: '/addAccount',
-						data: {info:$scope.info}
-					}).then(function(response) {
-						$scope.showlist();
-						$('#addPopUp').modal('hide')
-						$scope.info = {}
-					}, function(error) {
-						console.log(error);
-					});
+						$http({
+							method: 'POST',
+							url: '/addAccount',
+							data: {info:$scope.info}
+						}).then(function(response) {
+							$scope.showlist();
+							$('#addPopUp').modal('hide')
+							$scope.info = {}
+						}, function(error) {
+							console.log(error);
+						});
+					}
+					
+				}
+				function validateEmail(sEmail) {
+					var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+					if (filter.test(sEmail)) {
+						return true;
+					}
+					else {
+						return false;
+					}
 				}
 				
 				$scope.editAccount = function(accountId){
@@ -133,6 +163,20 @@ angular.module('myApp', ['angularUtils.directives.dirPagination'])
 						console.log(error);
 					});
 				}
+				$scope.adminSearchOneBirth = function(){
+					$scope.searchOneBirthData.fieldValue=$('#txtsearchBirthDay').val().trim().toString()
+					console.log($scope.searchOneBirthData)
+					$http({
+						method: 'POST',
+						url: '/adminsearchonebirth',
+						data: {searchOneBirthData:$scope.searchOneBirthData}
+					}).then(function(response) {
+						$scope.accounts = response.data;
+						console.log($scope.accounts)
+					}, function(error) {
+						console.log(error);
+					});
+				}
 
 				$scope.normalSearch = function(){
 				
@@ -149,17 +193,44 @@ angular.module('myApp', ['angularUtils.directives.dirPagination'])
 						console.log(error);
 					});
 				}
-				
-				$scope.updateAccount= function(accountId){
-				
-					$scope.info.gender=$('select[name=selectedGender]').val()
-					$scope.info.birthday=$('#txtBirthDay').val().toString()
-					$scope.info.memberSince=$('#txtMemberSince').val().toString()
+				$scope.logOut= function(){
 					$http({
 						method: 'POST',
-						url: '/updateAccount',
-						data: {info:$scope.info}
-					}).then(function(response) {
+						url: '/logout',
+					}).then(function(response){
+
+					}, function(error){
+						console.log(error)
+					});
+				}
+				
+				$scope.updateAccount= function(accountId){
+					
+					var sEmail = $('#txtMail').val();
+					var accountBalance = $('#txtAccountBalance').val();
+					var accountNumber = $('#txtAccountNumber').val();
+					var cardNumber = $('#txtCardNumber').val();
+					var phone = $('#txtPhoneNumber').val();
+					var idNumber = $('#txtIDNumber').val();
+					var isnum_accNum = /^\d+$/.test(accountNumber);
+					var isnum_cardNum = /^\d+$/.test(cardNumber);
+					var isnum_accBalance = /^\d+$/.test(accountBalance);
+					var isnum_phoneNum = /^\d+$/.test(phone);
+					var isnum_idNum = /^\d+$/.test(idNumber);
+					if ($.trim(sEmail).length == 0) {
+						alert('Please enter valid email address');
+					}
+					if (!validateEmail(sEmail)||!(isnum_accBalance&&accountBalance>0)||!isnum_cardNum||!isnum_accNum||!isnum_phoneNum||!isnum_idNum) {
+						alert('Please enter valid email address, account balance,card number, account number!');
+					} else{
+						$scope.info.gender=$('select[name=selectedGender]').val()
+						$scope.info.birthday=$('#txtBirthDay').val().toString()
+						$scope.info.memberSince=$('#txtMemberSince').val().toString()
+						$http({
+							method: 'POST',
+							url: '/updateAccount',
+							data: {info:$scope.info}
+						}).then(function(response) {
 						// console.log(response.data);
 
 						$scope.showlist();
@@ -167,6 +238,8 @@ angular.module('myApp', ['angularUtils.directives.dirPagination'])
 					}, function(error) {
 						console.log(error);
 					});
+					}
+					
 				}
 		
 				$scope.showAddPopUp = function(){
@@ -218,6 +291,6 @@ angular.module('myApp', ['angularUtils.directives.dirPagination'])
 					});
 				}
 				
-				if($('#auth').text()!='Normal Manager')
+				if($('#auth').text()=='Account Manager')
 					$scope.showlist();
             })

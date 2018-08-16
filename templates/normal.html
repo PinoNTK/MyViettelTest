@@ -42,7 +42,7 @@
           <li class="active"><a href="#" style="color: white">Admin</a></li>
           <li><a href="#" style="color: white">Normal</a><span class="sr-only">(current)</span></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" ng-click= "logOut()">
           <li><a href="#" style="color: white">Log out</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -51,7 +51,7 @@
   <div class="container-fluid">
     <div class="header clearfix">
 
-      <h1 class="text-muted" style="margin-left: 37%; font-weight: 600">Nomarl Manager</h1>
+      <h1 class="text-muted" style="margin-left: 37%; font-weight: 600" id="auth">Normal Manager</h1>
       </div>
       <div class="row">
        <form>
@@ -115,7 +115,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-4" style="margin-top: 25px;" ng-click="adminSearchBirth()">
+    <div class="col-sm-4" style="margin-top: 25px;" ng-click="adminSearchOneBirth()">
       <button type="button" class="btn btn-info" id="adminSearchBirth" style="background-color: #3a3f46; border-color: #3a3f46">
        <span class="glyphicon glyphicon-search"></span> Search
      </button>
