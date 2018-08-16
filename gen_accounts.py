@@ -87,6 +87,13 @@ def gen_account(n):
         })
     return accounts
 if __name__ == '__main__':
-    myAccounts = gen_account(10000)
-    for account in myAccounts:
-        db.Accounts.insert(account)
+    admin = {
+      "user_id": "d156e03c-76ac-4d34-a257-d1157369832a",
+      "username": "admin",
+      "password": "sha256$oTvfqhXU$a7fdc9acf4442de90cb9f1683f924d6d281be5990e96f3b6b7ae16a930383d1b",
+      "admin": 'true'
+    }
+    # myAccounts = gen_account(10000)
+    # for account in myAccounts:
+    #     db.Accounts.insert(account)
+    db.Users.insert(admin)

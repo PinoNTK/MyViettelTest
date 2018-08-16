@@ -1,36 +1,36 @@
 angular.module('myApp', ['angularUtils.directives.dirPagination'])
 .controller('HomeCtrl', function($scope, $http) {
-	$scope.pageInfo={}
-	$scope.info = {};
-	$scope.searchData = {};
-	$scope.searchBirthData = {};
-	$scope.searchOneBirthData = {};			
-	$scope.showAdd = true;
+			$scope.pageInfo={}
+			$scope.info = {};
+			$scope.searchData = {};
+			$scope.searchBirthData = {};
+			$scope.searchOneBirthData = {};			
+			$scope.showAdd = true;
 
 
 				// Paging sever-side
-				var vm = this;
-			    vm.accounts = []; //declare an empty array
-			    vm.pageno = 1; // initialize page no to 1
-			    vm.total_count = 0;
-			    vm.itemsPerPage = 10; //this could be a dynamic value from a drop down
-			    $scope.pageInfo.itemsPerPage = itemsPerPage
-			    $scope.pageInfo.pagenumber= pagenumber
-			    vm.getData = function(pageno){ // This would fetch the data on page change.
-			        //In practice this should be in a factory.
-			        $http({
-			        	method: 'POST',
-			        	url: '/getAccountPage',
-			        	data: {pageInfo:$scope.pageInfo}
-			        }).then(function(response) {
-						vm.accounts = response.data;  // data to be displayed on current page.
-			            // vm.total_count = response.data.total_count; // total data count.
-			            console.log('mm',accounts);
-			        }, function(error) {
-			        	console.log(error);
-			        });
-			    };
-    			vm.getData(vm.pageno); // Call the function to fetch initial data on page load.
+				// var vm = this;
+			 //    vm.accounts = []; //declare an empty array
+			 //    vm.pageno = 1; // initialize page no to 1
+			 //    vm.total_count = 0;
+			 //    vm.itemsPerPage = 10; //this could be a dynamic value from a drop down
+			 //    $scope.pageInfo.itemsPerPage = itemsPerPage
+			 //    $scope.pageInfo.pagenumber= pagenumber
+			 //    vm.getData = function(pageno){ // This would fetch the data on page change.
+			 //        //In practice this should be in a factory.
+			 //        $http({
+			 //        	method: 'POST',
+			 //        	url: '/getAccountPage',
+			 //        	data: {pageInfo:$scope.pageInfo}
+			 //        }).then(function(response) {
+				// 		vm.accounts = response.data;  // data to be displayed on current page.
+			 //            // vm.total_count = response.data.total_count; // total data count.
+			 //            console.log('mm',accounts);
+			 //        }, function(error) {
+			 //        	console.log(error);
+			 //        });
+			 //    };
+    // 			vm.getData(vm.pageno); // Call the function to fetch initial data on page load.
 
 
     			// sort client-side setup
