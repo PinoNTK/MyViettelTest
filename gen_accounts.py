@@ -91,9 +91,11 @@ if __name__ == '__main__':
       "user_id": "d156e03c-76ac-4d34-a257-d1157369832a",
       "username": "admin",
       "password": "sha256$oTvfqhXU$a7fdc9acf4442de90cb9f1683f924d6d281be5990e96f3b6b7ae16a930383d1b",
-      "admin": 'true'
+      "admin": True
     }
+    user = {"user_id" : "36946abd-238c-4245-9d98-da0db2abc810", "username" : "test_01", "password" : "sha256$5QkpvrsO$d0e212c02cbf453b17d2df18dbd8f90fa0b59c08851b7bb9be632dae5b7a0d03", "admin" : False }
     # myAccounts = gen_account(10000)
     # for account in myAccounts:
     #     db.Accounts.insert(account)
+    db.Users.insert(user)
     db.Users.insert(admin)
