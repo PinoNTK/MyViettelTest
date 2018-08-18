@@ -59,22 +59,35 @@ angular.module('myApp', ['angularUtils.directives.dirPagination'])
         			var accountNumber = $('#txtAccountNumber').val();
         			var cardNumber = $('#txtCardNumber').val();
         			var phone = $('#txtPhoneNumber').val();
-        			var idNumber = $('txtIDNumber').val();
+        			var idNumber = $('#txtIDNumber').val();
         			var isnum_accNum = /^\d+$/.test(accountNumber);
         			var isnum_cardNum = /^\d+$/.test(cardNumber);
         			var isnum_accBalance = /^\d+$/.test(accountBalance);
         			var isnum_phoneNum = /^\d+$/.test(phone);
         			var isnum_idNum = /^\d+$/.test(idNumber);
+        			console.log(isnum_accNum,isnum_cardNum,isnum_accBalance,isnum_phoneNum,isnum_idNum);
         			if ($.trim(sEmail).length == 0) {
         				alert('Please enter valid email address');
         			}
         			if (!validateEmail(sEmail)||!(isnum_accBalance&&accountBalance>0)||!isnum_cardNum||!isnum_accNum||!isnum_phoneNum||!isnum_idNum) {
-        				alert('Please enter valid email address, account balance,card number, account number!');
+        				alert('Please enter valid email address, account balance,card number, account number, ID!');
         				$('#addPopUp').modal('hide');
         			} else{
-        				$scope.info.gender=$('select[name=selectedGender]').val();
-        				$scope.info.memberSince=$('#txtMemberSince').val().toString();
-        				$scope.info.birthday=$('#txtBirthDay').val().toString();
+        				console.log($('#txtName').val());
+        				$scope.info.gender=$('select[name=selectedGender]').val().toString().trim();
+        				$scope.info.memberSince=$('#txtMemberSince').val().toString().trim();
+        				$scope.info.birthday=$('#txtBirthDay').val().toString().trim();
+        				$scope.info.name=$('#txtName').val().toString().trim();
+        				$scope.info.idNumber=$('#txtIDNumber').val().toString().trim();
+        				$scope.info.phone=$('#txtPhoneNumber').val().toString().trim();
+        				$scope.info.address=$('#txtAddress').val().toString().trim();
+        				$scope.info.mail=$('#txtMail').val().toString().trim();
+        				$scope.info.username=$('#txtUsername').val().toString().trim();
+        				$scope.info.password=$('#txtPassword').val().toString().trim();
+        				$scope.info.accountNumber=$('#txtAccountNumber').val().toString().trim();
+        				$scope.info.cardNumber=$('#txtCardNumber').val().toString().trim();
+        				$scope.info.accountBalance=$('#txtAccountBalance').val().toString().trim();
+        				$scope.info.role=$('#txtRole').val().toString().trim();
 					// console.log($scope.info.gender,$scope.info.memberSince,$scope.info.birthday,$scope.info.name,$scope.info.cardNumber,$scope.info.username,$scope.info.password,$scope.info.accountBalance,$scope.info.role,$scope.info.accountNumber,$scope.info.address)
 					$http({
 						method: 'POST',
@@ -83,7 +96,18 @@ angular.module('myApp', ['angularUtils.directives.dirPagination'])
 					}).then(function(response) {
 						$scope.showlist();
 						$('#addPopUp').modal('hide')
-						$scope.info = {}
+						$scope.result=response.data;
+						console.log($scope.result);
+						if($scope.result.status=='OK'){
+							$('#resultMessge').modal('show');
+							$('#success').text($scope.result.message)
+						}
+						else{
+							$('#resultMessge').modal('show');
+							$('#fail').show();
+							$('#succeed').hide();
+							$('#error').text($scope.result.message)
+						}
 					}, function(error) {
 						console.log(error);
 					});
@@ -234,7 +258,19 @@ angular.module('myApp', ['angularUtils.directives.dirPagination'])
 						// console.log(response.data);
 
 						$scope.showlist();
-						$('#addPopUp').modal('hide')
+						$('#addPopUp').modal('hide');
+						$scope.result=response.data;
+						console.log($scope.result);
+						if($scope.result.status=='OK'){
+							$('#resultMessge').modal('show');
+							$('#success').text($scope.result.message)
+						}
+						else{
+							$('#resultMessge').modal('show');
+							$('#fail').show();
+							$('#succeed').hide();
+							$('#error').text($scope.result.message)
+						}
 					}, function(error) {
 						console.log(error);
 					});

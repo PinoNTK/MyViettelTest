@@ -49,7 +49,7 @@ def addAccount(current_user):
         json_data = request.json['info']
 
         if db.Accounts.find_one({'idNumber':json_data['idNumber']}) or db.Accounts.find_one({'username':json_data['username']}) or db.Accounts.find_one({'accountNumber':json_data['accountNumber']}) or db.Accounts.find_one({'mail':json_data['mail']}) or db.Accounts.find_one({'cardNumber':json_data['cardNumber']}):
-            return jsonify({'message' : 'Data invalid!'})
+            return jsonify(status='ERROR',message='Data duplicate!')
         accountBalance = json_data['accountBalance']
         accountNumber = json_data['accountNumber']
         address = json_data['address']
@@ -143,7 +143,6 @@ def updateAccount(current_user):
         gender = accountInfo['gender']
         memberSince = accountInfo['memberSince']
         accountId = accountInfo['accountId'] 
-
         db.Accounts.update_one({'_id':ObjectId(accountId)},{'$set':{'accountBalance':accountBalance,'accountNumber':accountNumber,'address':address,'birthday':birthday,'cardNumber':cardNumber,'idNumber':idNumber,'mail':mail,'name':name,'password':password,'phoneNumber':phoneNumber,'role':role,'username':username,'gender':gender,'memberSince':memberSince}})
         return jsonify(status='OK',message='updated successfully')
     except Exception as e:
@@ -449,7 +448,7 @@ def login():
     if login_user:
         if check_password_hash(login_user['password'],auth.password):
             session['username']= auth.username
-            token = jwt.encode({'user_id' : login_user['user_id'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=5)}, application.config['SECRET_KEY'])           
+            token = jwt.encode({'user_id' : login_user['user_id'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=15)}, application.config['SECRET_KEY'])           
             session['token']=token.decode('UTF-8')
             return redirect(url_for('index'))
 

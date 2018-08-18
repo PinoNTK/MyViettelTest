@@ -262,7 +262,7 @@ margin-left: 34px;">
                       <label class="col-md-4 control-label" for="txtName">Full Name</label>
                       <div class="col-md-8 inputGroupContainer">
                         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                          <input id="fullName" name="fullName" placeholder="Full Name" class="form-control inputCustom" required="true" value="" type="text" ng-model="info.name" id="txtName">
+                          <input name="fullName" placeholder="Full Name" class="form-control inputCustom" required="true" value="" type="text" ng-model="info.name" id="txtName">
                         </div>
                       </div>
                     </div>
@@ -424,7 +424,7 @@ margin-left: 34px;">
  </div>
 </div>
 <!-- Footer -->
-<footer id="myFooter">
+<footer id="myFooter" style="margin-bottom: -163px">
   <div class="container">
     <div class="row">
       <div class="col-sm-3">
@@ -468,6 +468,31 @@ margin-left: 34px;">
   </div>
 </div>
 </footer>
+<!-- Modal -->
+<div class="modal fade" id="resultMessge" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Result</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success" id='succeed'>
+          <p id='success'><strong></strong></p>
+        </div>
+        <div class="alert alert-danger" style="display: none" id='fail'>
+          <strong>Something wrong!</strong> <p id="error"></p>.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script type="text/javascript" src="static/js/moment.js"></script>
   <script type="text/javascript" src="static/js/bootstrap-datetimepicker.min.js"></script>

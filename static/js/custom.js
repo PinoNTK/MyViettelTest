@@ -14,6 +14,7 @@ $(document).ready(function () {
 		$('.inputCustom,#passwordEye').prop('disabled',false);
 		$('#addPopUp,#btnUpdate').show();
 		$(this,'#btnSave').hide();
+		$()
 	});
 	$('#btnUpdate').click(function(event){
 		$('#addPopUp').css( 'cursor', 'progress' );
