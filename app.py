@@ -268,10 +268,10 @@ def searchBirthAccounts(current_user):
         currentTime=str(time.strftime('%d/%m/%Y', currentTimeRaw))
         print(currentTime)
         customerAge = datetime.timedelta(seconds= time.mktime(time.strptime(currentTime,"%d/%m/%Y"))-time.mktime(time.strptime(searchParameters['fieldValue'],"%d/%m/%Y"))).days//365
-        print(customerAge)
-        for account in accounts:
+        print('Customer:',customerAge)
+        for index, account in enumerate(accounts):
             accountAge = datetime.timedelta(seconds= time.mktime(time.strptime(currentTime,"%d/%m/%Y"))-time.mktime(time.strptime(account['birthday'],"%d/%m/%Y"))).days//365
-            print(accountAge)
+            print(index,accountAge)
             if accountAge>=customerAge:
                     accountItem = {
                             'accountBalance' : account['accountBalance'],

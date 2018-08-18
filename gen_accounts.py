@@ -1,5 +1,6 @@
 import random
 import string
+import json
 from pymongo import MongoClient
 client = MongoClient('localhost:27017')
 db = client.BankAccount
@@ -25,7 +26,7 @@ def address():
     return addr
 day_in_month = {
         1:31,
-        2:29,
+        2:28,
         3:31,
         4:30,
         5:31,
@@ -42,7 +43,7 @@ def birthday():
 
     month = random.randint(1,12)
     if month==2 and (year%4==0 and year%100!=0):
-        day = 28
+        day = 29
     else:
         day = day_in_month[month]
     day = random.randint(1,day)
@@ -53,11 +54,11 @@ def mail(name):
 
 
 ho = [u'Phạm', u'Nguyễn', u'Trần', u'Hoàng', u'Lê']
-ten_dem = {'male':['Văn','Đình'],
-           'female':[ 'Thị', 'Ngọc']}
+ten_dem = {'Male':['Văn','Đình'],
+           'Female':[ 'Thị', 'Ngọc']}
 
-ten = {'male':['Linh', 'Kiên', 'Sơn','Hưng','Hùng','Tuấn','Tú','Đông','Bộ','Đức','Thái','Việt','Hoàng','Tiến','Tùng' ],
-        'female':['Nhi', 'Hoa', 'Duyên','Anh','Linh','Ánh','Hương','Hiền','Hòa','Thu','Trang','Phương','Nhung','Nga']}
+ten = {'Male':['Linh', 'Kiên', 'Sơn','Hưng','Hùng','Tuấn','Tú','Đông','Bộ','Đức','Thái','Việt','Hoàng','Tiến','Tùng' ],
+        'Female':['Nhi', 'Hoa', 'Duyên','Anh','Linh','Ánh','Hương','Hiền','Hòa','Thu','Trang','Phương','Nhung','Nga']}
 def name_rand(gender):
 
     return '{0} {1} {2}'.format(random.choice(ho),random.choice(ten_dem[gender]),random.choice(ten[gender]))
@@ -67,7 +68,7 @@ def username(name):
 def gen_account(n):
     accounts = []
     for i in range(n):
-        gender = random.choice(['male','female'])
+        gender = random.choice(['Male','Female'])
         name = name_rand(gender)
         accounts.append({
             'accountBalance':random.randint(50000,1e9),
@@ -94,8 +95,8 @@ if __name__ == '__main__':
       "admin": True
     }
     user = {"user_id" : "36946abd-238c-4245-9d98-da0db2abc810", "username" : "test_01", "password" : "sha256$5QkpvrsO$d0e212c02cbf453b17d2df18dbd8f90fa0b59c08851b7bb9be632dae5b7a0d03", "admin" : False }
-    # myAccounts = gen_account(10000)
-    # for account in myAccounts:
-    #     db.Accounts.insert(account)
+    myAccounts = gen_account(10000)
+    for account in myAccounts:
+        db.Accounts.insert(account)
     db.Users.insert(user)
     db.Users.insert(admin)
