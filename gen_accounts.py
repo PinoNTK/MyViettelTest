@@ -45,7 +45,7 @@ def birthday():
         day = 28
     else:
         day = day_in_month[month]
-    day = random.randint(1,day+1)
+    day = random.randint(1,day)
     return '{0}/{1}/{2}'.format(day,month,year)
 def mail(name):
     user = '{0}{1}'.format(name.lower().replace(' ', ''), random.randint(1, 9999999))
@@ -83,7 +83,7 @@ def gen_account(n):
             'role':random.choice(['normal','admin']),
             'username':username(name),
             'gender':gender,
-            'memberSince':'{0:02d}/{1:04d}'.format(random.randint(1,13),random.randint(2000,2019))
+            'memberSince':'{0:02d}/{1:04d}'.format(random.randint(1,12),random.randint(2000,2019))
         })
     return accounts
 if __name__ == '__main__':
