@@ -250,6 +250,7 @@ angular.module('myApp', ['angularUtils.directives.dirPagination'])
 					$scope.info.gender=$('select[name=selectedGender]').val()
 					$scope.info.birthday=$('#txtBirthDay').val().toString()
 					$scope.info.memberSince=$('#txtMemberSince').val().toString()
+					$('body').css('padding-right','0px');
 					$http({
 						method: 'POST',
 						url: '/updateAccount',
