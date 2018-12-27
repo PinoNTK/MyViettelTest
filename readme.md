@@ -6,7 +6,7 @@
 
 Tài liệu này sẽ giải thích chi tiết về cách thức hoạt động của tool cũng như ý nghĩa của các trường dữ liệu đầu vào ứng với các thông tin của services trong Kong. 
 
-##Các tính năng của tool
+## Các tính năng của tool
 
 - Tự động sinh ra các services, các routes tương ứng với mỗi service, thêm các plugins như ip-restriction, redirect http to https, certificates từ file dữ liệu đầu vào định dạng .json theo chuẩn.
 - Tự động xóa các services, routes, certificates, plugins.
@@ -46,9 +46,3 @@ __Ý nghĩa của các trường__
 		python auto_config_apigateway.py --host your_host --file file_name --action create
 ### Xóa service, routes, certificates, ...:
 		python auto_config_apigateway.py --host your_host --file file_name --action delete
-
-**Nội dung**
-
-[TOCM]
-
-[TOC]
