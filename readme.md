@@ -46,4 +46,4 @@ __Ý nghĩa của các trường__
 ### Sinh services, routes, certificates, ...:
 		python auto_config_apigateway.py --host your_host --file file_name --action create
 ### Xóa tất cả services, routes, certificates, ...:
-		python auto_config_apigateway.py --host your_host --file file_name --action delete
+		python auto_config_apigateway.py --host your_host --action delete
