@@ -44,5 +44,5 @@ __Ý nghĩa của các trường__
 ## Cách thức triển khai
 ### Sinh service, routes, certificates, ...:
 		python auto_config_apigateway.py --host your_host --file file_name --action create
-### Xóa service, routes, certificates, ...:
+### Xóa tất cả services, routes, certificates, ...:
 		python auto_config_apigateway.py --host your_host --file file_name --action delete
