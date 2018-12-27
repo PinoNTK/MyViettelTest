@@ -41,6 +41,7 @@ __Ý nghĩa của các trường__
  - ****is_redirected****: nhận hai giá trị __true__ hoặc __false__, xác định xem có điều hướng các http request thành https request hay không.
  
  ![](https://raw.githubusercontent.com/PinoNTK/MyViettelTest/master/Drawing1.png)
+![]( https://raw.githubusercontent.com/PinoNTK/MyViettelTest/master/plugins.png)
 ## Cách thức triển khai
 ### Sinh services, routes, certificates, ...:
 		python auto_config_apigateway.py --host your_host --file file_name --action create
