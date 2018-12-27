@@ -1,6 +1,6 @@
 # Tool sinh services
 
-Đây là một tool được viết bằng python giúp sinh tự động các services lên Kong api gateway từ một file dữ liệu json.
+Đây là một tool được viết bằng python giúp sinh tự động các services lên Kong API Gateway từ một file dữ liệu json.
 
 ## Tóm tắt
 
