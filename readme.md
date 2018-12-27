@@ -1,4 +1,4 @@
-# Tool sinh services
+# Tool tạo services tự động
 
 Đây là một tool được viết bằng python giúp sinh tự động các services lên Kong API Gateway từ một file dữ liệu json.
 
@@ -42,7 +42,7 @@ __Ý nghĩa của các trường__
  
  ![](https://raw.githubusercontent.com/PinoNTK/MyViettelTest/master/Drawing1.png)
 ## Cách thức triển khai
-### Sinh service, routes, certificates, ...:
+### Sinh services, routes, certificates, ...:
 		python auto_config_apigateway.py --host your_host --file file_name --action create
 ### Xóa tất cả services, routes, certificates, ...:
 		python auto_config_apigateway.py --host your_host --file file_name --action delete
